@@ -1,0 +1,30 @@
+{
+  "name": "original",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@koa/cors": "^3.3.0",
+    "fs": "^0.0.1-security",
+    "jsonschema": "^1.4.0",
+    "koa": "^2.13.4",
+    "koa-body": "^4.2.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-passport": "^4.1.4",
+    "koa-router": "^10.1.1",
+    "koa-static-router": "^1.5.0",
+    "mime-types": "^2.1.35",
+    "mongodb": "^4.4.1",
+    "passport-http": "^0.3.0",
+    "pg": "^8.7.3",
+    "request": "^2.88.2",
+    "role-acl": "^4.5.4",
+    "sequelize": "^6.17.0",
+    "uuid": "^8.3.2"
+  }
+}

@@ -1,0 +1,73 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Back End Demonstration API
+  description: A simple blog API.
+  contact:
+    name: Retirng Cheng sir
+    email: cycheng@vtc.edu.hk
+  license:
+    name: Apache 2.0
+    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+servers:
+  - url: 'https://BScCOM-Blog-API-example.wongazta.repl.co'
+    description: Development server
+tags:
+  - name: Users
+    description: API endpoints for user management.
+  - name: Articles
+    description: Access and perform CRUD operations on blog entries.
+paths:
+  /articles/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+        description: Numeric id of the articles
+    get:
+      tags:
+        - Articles
+      description:
+        Get articles by id.
+      responses:
+        '200':
+          description: View of articles 
+        '404':
+          description: Articles was not found in the DB.
+    post:
+      tags:
+        - Articles
+      description:
+        Create a new article.
+      requestBody:
+        description: All new article data.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: ./article.json#/definitions/article
+      responses:
+        '201':
+          description: User created
+
+    put:
+      tags:
+        - Articles
+      description: Update articles by ID.
+      responses:
+        '200':
+          description: Update confirmation and link to record.
+        '404':
+          description: Articles was not found in the DB.
+    delete:
+      tags:
+        - Articles
+      description: Delete articles by ID.
+    responses:
+        '200':
+          description: Delete confirmation.
+        '404':
+          description: Articles was not found in the DB.
+
