@@ -1,4 +1,4 @@
-ALTER TABLE articleslikes
+ALTER TABLE articles
 ADD CONSTRAINT NoDuplicateLike UNIQUE (articleID, userID);
 
 ON CONFLICT ON CONSTRAINT  NoDuplicateLike  
