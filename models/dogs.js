@@ -4,7 +4,7 @@ const dbMongo = require('../helpers/mongodb')
 
 exports.getAll = async function getAll (limit=10, page=1) {
   const offset = (page - 1) * limit;
-  const query = "SELECT * FROM dog LIMIT  ?";
+  const query = "SELECT * FROM dog";
   const data = await db.run_query(query, [limit, offset]);
   return data;
 }
