@@ -38,9 +38,20 @@ exports.add = async function add (article) {
   }
 }
 
+//get a single dog by its id  
+exports.getById = async function getById (id) {
+  let query = "SELECT * FROM dog WHERE ID = ?"
+  let values = [id]
+  let data = await db.run_query(query, values)
+  return data
+}
 
-
-
+exports.deleteById = async function deleteById (id) {
+  let query = "Delete FROM dog WHERE ID = ?"
+  let values = [id]
+  let data = await db.run_query(query, values)
+  return data
+}
 
 //get a single dog by the (unique) dogname
 exports.findBydogname = async function getBydogname(dogname) {
