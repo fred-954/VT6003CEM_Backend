@@ -65,10 +65,10 @@ async function getAll(ctx) {
   if (result.length) {
     const body = result.map(post => {
       // extract the post fields we want to send back (summary details)
-      const {id, dogname,dogType,dogage,site} = post;
+      const {id, dogname,dogtype,dogage,site} = post;
       // add links to the post summaries for HATEOAS compliance
       // clients can follow these to find related resources
-      return {id, dogname,dogType,dogage,site};
+      return {id, dogname,dogtype,dogage,site};
     });
     ctx.body = body;
     
