@@ -10,8 +10,10 @@ exports.getAll = async function getAll (limit=10, page=1) {
 }
 exports.getSearch = async function getSearch (sfield,q) {
   
-  const query = `SELECT ${sfield} FROM dog WHERE ${sfield} LIKE '%${q}%' `;
+  const query = `SELECT * FROM dog WHERE ${sfield} LIKE '%${q}%' `;
   const data = await db.run_query(query);
+  console.log("query", query);
+  console.log("data", data);
   return data;
 }
 
@@ -22,9 +24,9 @@ exports.getBydogId = async function getBydogId (id) {
   return data
 }
 
-exports.add = async function add (article) {  
-  let keys = Object.keys(article)
-  let values = Object.values(article)  
+exports.add = async function add (dog) {  
+  let keys = Object.keys(dog)
+  let values = Object.values(dog)  
   keys = keys.join(',')   
   let parm = ''
   for(i=0; i<values.length; i++){ parm +='?,'}

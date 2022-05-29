@@ -33,23 +33,7 @@ async function doSearch(ctx, next){
     else
     result= await model.getAll(limit, page);
     if (result.length) {
-      if (fields !== null) {
-    // first ensure the fields are contained in an array
-    // need this since a single field in the query is passed as a string
-    if (!Array.isArray(fields)) {
-      fields = [fields];
-    }
-    // then filter each row in the array of results
-    // by only including the specified fields
-    result = result.map(record => {
-      partial = {};
-      for (field of fields) {                                 
-          partial[field] = record[field];
-      }
-      
-      return partial;
-    });      
-  }
+
   ctx.body = result;
 }
         }
@@ -61,10 +45,10 @@ async function getAll(ctx) {
   if (result.length) {
     const body = result.map(post => {
       // extract the post fields we want to send back (summary details)
-      const {id, dogname,dogtype,dogage,site} = post;
+      const {id, dogname,dogtype,dogage,gender,site} = post;
       // add links to the post summaries for HATEOAS compliance
       // clients can follow these to find related resources
-      return {id, dogname,dogtype,dogage,site};
+      return {id, dogname,dogtype,dogage,gender,site};
     });
     ctx.body = body;
     
