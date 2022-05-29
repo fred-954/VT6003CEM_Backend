@@ -1,23 +1,20 @@
 const Router = require('koa-router')
 const bodyParser = require('koa-bodyparser')
-const auth = require('../controllers/auth')
-const can = require('../permissions/userdogs');
+
 const model = require('../models/dogs')
 const prefix = '/api/v1/dogs';
 const router = Router({prefix: prefix});
 
 router.get('/', getAll)
-router.get('/search', auth, doSearch)
+router.get('/search', bodyParser(), doSearch)
 router.post('/', bodyParser(), createDog)
 router.get('/:id([0-9]{1,})', getById)
 router.put('/:id([0-9]{1,})',bodyParser(), updateDog)
 router.del('/:id([0-9]{1,})', deleteDog)
 
 async function doSearch(ctx, next){
-const permission = can.readAll(ctx.state.user);
- if (!permission.granted) {
-    ctx.status = 403;
-  } else {
+
+
     let {limit=20, page=1, fields="",q=""} = ctx.request.query;
 
     // ensure params are integers
@@ -56,7 +53,6 @@ const permission = can.readAll(ctx.state.user);
   ctx.body = result;
 }
         }
-}
 
 async function getAll(ctx) {
 
