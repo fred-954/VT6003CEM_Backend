@@ -9,7 +9,7 @@ router.get('/', getAll)
 router.get('/search', bodyParser(), doSearch)
 router.post('/', bodyParser(), createDog)
 router.get('/:id([0-9]{1,})', getById)
-router.put('/:id([0-9]{1,})',bodyParser(), updateDog)
+router.put('/update/:id([0-9]{1,})',bodyParser(), updateDog)
 router.get('/delete/:id([0-9]{1,})', deleteDog)
 
 async function doSearch(ctx, next){
